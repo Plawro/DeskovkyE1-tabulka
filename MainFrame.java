@@ -100,12 +100,15 @@ public class MainFrame extends JFrame{
 
     Box horizontalBox = Box.createHorizontalBox();
 
-JTable table = new JTable(3, 2);;
+    JTable table = new JTable(3, 2);;
     JScrollPane scrollPane = new JScrollPane(table);
+    int pocetPokusu = 0;
     private void zobrazAktualniDeskovku() {
-        DefaultTableModel model = new DefaultTableModel(new Object[][]{{vlastnimeHru.get(aktualniDeskovka), nazevHry.get(aktualniDeskovka), oblibenostHry.get(aktualniDeskovka)}}, new Object[]{"Vlastníme hru", "Název hry", "Oblíbenost"});
-        table.setModel(model);
-        this.add(Box.createRigidArea(new Dimension(0, 35)));
+        pocetPokusu++;
+        table.setModel(new DefaultTableModel(new Object[][]{{vlastnimeHru.get(aktualniDeskovka), nazevHry.get(aktualniDeskovka), oblibenostHry.get(aktualniDeskovka)}}, new Object[]{"Vlastníme hru", "Název hry", "Oblíbenost"}));
+        if(pocetPokusu == 1){
+            this.add(Box.createRigidArea(new Dimension(0, 35)));
+        }
         this.add(scrollPane);
         this.revalidate();
     }
